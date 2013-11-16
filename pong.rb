@@ -20,6 +20,12 @@ class Pong < Hasu::Window
     @ball.draw(self)
   end
 
+  # '!' will delete the previous ball and draw a new ball
+  # Makes the ball moves
+  def update
+    @ball.move!
+  end
+
 end
 
 Pong.run
