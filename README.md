@@ -2,7 +2,7 @@
 
 ##Instructions
 <ol>
-<li>Clone [PONG](https://github.com/pdarden/Pong.git).</li>
+<li>Clone <a href="https://github.com/pdarden/Pong.git">Pong</a>.</li>
 <li>To play pong <code>$ gem install hasu</code> and run <code>$ ruby pong.rb</code> from the repo's directory.</li>
 </ol>
 
