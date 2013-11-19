@@ -14,7 +14,7 @@ class Pong < Hasu::Window
   end
 
   def reset
-    @ball = Ball.new
+    @ball = Ball.new(self)
 
     @left_score = 0
     @right_score = 0
@@ -75,12 +75,12 @@ class Pong < Hasu::Window
     # and reset the ball
     if @ball.off_left?
       @right_score += 1
-      @ball = Ball.new
+      @ball = Ball.new(self)
     end
 
     if @ball.off_right?
       @left_score += 1
-      @ball = Ball.new
+      @ball = Ball.new(self)
     end
   end
 

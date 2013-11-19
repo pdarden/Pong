@@ -14,7 +14,7 @@ class Paddle
   def ai_move!(ball)
     if y > ball.y
       up!
-    else
+    elsif y < ball.y
       down!
     end
   end

@@ -1,8 +1,8 @@
 class Ball
-  SIZE = 16
+  SIZE = 75
 
   attr_reader :x, :y, :angle, :speed
-  def initialize
+  def initialize(window)
     @x = Pong::WIDTH/2
     @y = Pong::HEIGHT/2
 
@@ -10,6 +10,8 @@ class Ball
     @angle = rand(120) + 30
     @angle *= -1 if rand > 0.5
     @speed = 6
+    @img_flipped = Gosu::Image.new(window, "./Nyan_cat_flipped.png", false)
+    @img = Gosu::Image.new(window, "./Nyan_cat.png", false)
   end
 
   def dx; Gosu.offset_x(angle, speed); end
@@ -21,8 +23,8 @@ class Ball
     @y += dy
 
     # Make the ball bounce from the top
-    if @y < 0
-      @y = 0
+    if @y < 20
+      @y = 20
       bounce_off_edge!
     end
 
@@ -42,16 +44,26 @@ class Ball
   def y1; @y - SIZE/2; end
   def y2; @y + SIZE/2; end
 
+  def intersect?(paddle)
+    x1 < paddle.x2 &&
+      x2 > paddle.x1 &&
+      y1 < paddle.y2 &&
+      y2 > paddle.y1
+  end
+
   ##Draw the ball
   def draw(window)
-    color = Gosu::Color::RED
+      @img.draw(x1, y1, 5)
 
-    window.draw_quad(
-      x1, y1, color,
-      x1, y2, color,
-      x2, y2, color,
-      x2, y1, color
-      )
+    # color = @img.draw(0,0,0)
+    # color = Gosu::Color::BLUE
+
+    # window.draw_quad(
+    #   x1, y1, color,
+    #   x1, y2, color,
+    #   x2, y2, color,
+    #   x2, y1, color
+    #   )
   end
 
   def off_left?
@@ -60,13 +72,6 @@ class Ball
 
   def off_right?
     x2 > Pong::WIDTH
-  end
-
-  def intersect?(paddle)
-    x1 < paddle.x2 &&
-      x2 > paddle.x1 &&
-      y1 < paddle.y2 &&
-      y2 > paddle.y1
   end
 
   def bounce_off_paddle!(paddle)
