@@ -11,6 +11,7 @@ class Pong < Hasu::Window
   # Width and height of the game's window
   def initialize
     super(WIDTH, HEIGHT, false)
+    @orientation = 1
   end
 
   def reset
@@ -21,12 +22,12 @@ class Pong < Hasu::Window
 
     @font = Gosu::Font.new(self, "Arial", 30)
 
-    @left_paddle = Paddle.new(:left, true)
+    @left_paddle = Paddle.new(:left, false)
     @right_paddle = Paddle.new(:right)
   end
 
   def draw
-    @ball.draw(self)
+    @ball.draw(self, @orientation)
 
     @font.draw(@left_score, 30, 30, 0)
     @font.draw(@right_score, WIDTH-50, 30, 0)
@@ -64,10 +65,12 @@ class Pong < Hasu::Window
 
     # Makes ball bounce off the paddle.
     if @ball.intersect?(@left_paddle)
+      @orientation = 1
       @ball.bounce_off_paddle!(@left_paddle)
     end
 
     if @ball.intersect?(@right_paddle)
+      @orientation = -1
       @ball.bounce_off_paddle!(@right_paddle)
     end
 
