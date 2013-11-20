@@ -13,6 +13,7 @@ class Pong < Hasu::Window
     super(WIDTH, HEIGHT, false)
     @song = Gosu::Song.new(self, "./Nyan\ Cat.mp3")
     @song.play(true)
+    @background_img = Gosu::Image.new(self, "./nyancatbg.png",true)
   end
 
   def reset
@@ -30,6 +31,7 @@ class Pong < Hasu::Window
 
   def draw
     @ball.draw(self, @orientation)
+    @background_img.draw(0,0,0)
 
     @font.draw(@left_score, 30, 30, 0)
     @font.draw(@right_score, WIDTH-50, 30, 0)
