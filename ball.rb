@@ -8,10 +8,8 @@ class Ball
 
     # Starting angle
     @angle = rand(120) + 30
-    @angle *= -1 if rand > 0.5
+    # @angle *= -1 if rand > 0.5
     @speed = 6
-    # @images = ["./Nyan_cat.png","./Nyan_cat_flipped.png"]
-    # @img_index = 0
     @img = Gosu::Image.new(window, "./Nyan_cat.png", false)
   end
 
@@ -54,7 +52,7 @@ class Ball
 
   ##Draw the ball
   def draw(window, orientation)
-      @img.draw_rot(x1, y1, 5, 0, 0.7, 0.7, orientation)
+    @img.draw_rot(x1, y1, 5, 0, 0.7, 0.7, orientation)
 
     # color = @img.draw(0,0,0)
     # color = Gosu::Color::BLUE
@@ -79,10 +77,8 @@ class Ball
     case paddle.side
     when :left
       @x = paddle.x2 + SIZE/2
-      # @img_index = 0
     when :right
       @x = paddle.x1 - SIZE/2
-      # @img_index = 1
     end
 
     ratio = (y - paddle.y) / Paddle::HEIGHT

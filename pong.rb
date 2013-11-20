@@ -11,12 +11,12 @@ class Pong < Hasu::Window
   # Width and height of the game's window
   def initialize
     super(WIDTH, HEIGHT, false)
-    @orientation = 1
     @song = Gosu::Song.new(self, "./Nyan\ Cat.mp3")
     @song.play(true)
   end
 
   def reset
+    @orientation = 1
     @ball = Ball.new(self)
 
     @left_score = 0
@@ -81,6 +81,7 @@ class Pong < Hasu::Window
     if @ball.off_left?
       @right_score += 1
       @ball = Ball.new(self)
+      @orientation = 1
     end
 
     if @ball.off_right?
