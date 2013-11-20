@@ -1,5 +1,5 @@
 class Ball
-  SIZE = 75
+  SIZE = 50
 
   attr_reader :x, :y, :angle, :speed
   def initialize(window)
@@ -24,14 +24,14 @@ class Ball
     @y += dy
 
     # Make the ball bounce from the top
-    if @y < 20
-      @y = 20
+    if @y < 43
+      @y = 43
       bounce_off_edge!
     end
 
     # Make the ball bounce from the bottom
-    if @y > Pong::HEIGHT
-      @y = Pong::HEIGHT
+    if @y > Pong::HEIGHT + 15
+      @y = Pong::HEIGHT + 15
       bounce_off_edge!
     end
   end
@@ -54,7 +54,7 @@ class Ball
 
   ##Draw the ball
   def draw(window, orientation)
-      @img.draw_rot(x1, y1, 5, 0, 0.5,0.5, orientation)
+      @img.draw_rot(x1, y1, 5, 0, 0.7, 0.7, orientation)
 
     # color = @img.draw(0,0,0)
     # color = Gosu::Color::BLUE
