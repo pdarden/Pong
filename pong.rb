@@ -12,6 +12,8 @@ class Pong < Hasu::Window
   def initialize
     super(WIDTH, HEIGHT, false)
     @orientation = 1
+    @song = Gosu::Song.new(self, "./Nyan\ Cat.mp3")
+    @song.play(true)
   end
 
   def reset
