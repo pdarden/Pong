@@ -9,10 +9,6 @@
 
 ####Future Features
 <ul>
-<li>Nyah cat</li>
-<li>Music</li>
-<li>Trailing rainbow</li>
-<li>Flip Nyah cat around when it hits the paddles</li>
 <li>1 or 2 players option</li>
 <li>2 players over server</li>
 </ul>
